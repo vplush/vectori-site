@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Growth Partner для собственников бизнеса: строим маркетинг как систему, которая растит выручку. Отдел маркетинга по цене 1 сотрудника.">
+<title>VEKTOR Growth Partner</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: single dark column, wide editorial headings left-aligned, lime used only for numbers, CTAs and the growth line */
+:root{
+  --bg:#0A0C09;
+  --surface:#121510;
+  --surface-2:#191D15;
+  --line:#262B20;
+  --fg:#EEF2E6;
+  --muted:#8E9784;
+  --lime:#C8FF3C;
+  --lime-dim:rgba(200,255,60,.12);
+  --on-lime:#0A0C09;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Onest","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:18px;
+  --wrap:1180px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:clamp(72px,10vw,128px);border-top:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+.h2{font-size:clamp(30px,4.6vw,56px);font-weight:700;max-width:18ch}
+.lead{color:var(--muted);font-size:clamp(17px,1.6vw,19px);max-width:60ch}
+.head{display:grid;gap:20px;margin-bottom:clamp(40px,6vw,64px)}
+.lime{color:var(--lime)}
+.mono{font-family:var(--mono)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--body);font-weight:600;font-size:16px;padding:17px 26px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-lime{background:var(--lime);color:var(--on-lime);box-shadow:0 0 0 0 rgba(200,255,60,.0)}
+.btn-lime:hover{transform:translateY(-2px);box-shadow:0 10px 40px -8px rgba(200,255,60,.55)}
+.btn-ghost{border-color:var(--line);color:var(--fg);background:transparent}
+.btn-ghost:hover{border-color:var(--lime);color:var(--lime)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.arrow{transition:transform .2s}.btn:hover .arrow{transform:translateX(4px)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,12,9,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+.logo{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:.04em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo i{display:block;width:22px;height:22px;background:var(--lime);clip-path:polygon(0 100%,38% 38%,62% 62%,100% 0,100% 40%,62% 100%,38% 76%,22% 100%)}
+.logo small{font-family:var(--mono);font-weight:400;font-size:10.5px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px;color:var(--muted)}
+.nav ul a{text-decoration:none}.nav ul a:hover{color:var(--fg)}
+.nav .btn{padding:11px 18px;font-size:14.5px}
+@media (max-width:920px){.nav ul{display:none}.logo small{display:none}}
+
+/* hero */
+.hero{border-top:0;padding-block:clamp(56px,8vw,104px) clamp(64px,8vw,104px);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;width:720px;height:720px;right:-220px;top:-260px;background:radial-gradient(circle,rgba(200,255,60,.16),transparent 62%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,64px);align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(38px,6.4vw,84px);font-weight:800;margin:22px 0 26px}
+.hero h1 em{font-style:normal;color:var(--lime);text-shadow:0 0 38px rgba(200,255,60,.35)}
+.hero .lead{font-size:clamp(17px,1.7vw,20px);color:#B9C1AF}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.micro{margin-top:16px;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px}
+.micro span::before{content:"✓ ";color:var(--lime)}
+.trust-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:44px}
+.chip{font-family:var(--mono);font-size:12.5px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;color:#C3CBB8;background:var(--surface)}
+@media (max-width:920px){.hero-grid{grid-template-columns:1fr}}
+
+/* dashboard mock */
+.dash{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 40px 80px -40px rgba(0,0,0,.8),0 0 0 1px rgba(200,255,60,.05) inset;min-width:0}
+.dash-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:18px}
+.live{display:inline-flex;align-items:center;gap:7px;color:var(--lime)}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px}
+.kpi b{display:block;font-family:var(--display);font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;margin:4px 0 2px}
+.kpi span{font-size:12.5px;color:var(--muted)}
+.kpi .up{font-family:var(--mono);font-size:12px;color:var(--lime)}
+.kpi .down{font-family:var(--mono);font-size:12px;color:var(--lime)}
+.chart{margin-top:12px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 14px 8px}
+.chart-h{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.chart svg{width:100%;height:auto;display:block;margin-top:6px}
+.growth-line{stroke-dasharray:640;stroke-dashoffset:0;animation:draw 2.2s cubic-bezier(.6,0,.2,1) both .3s}
+@keyframes draw{from{stroke-dashoffset:640}}
+.dash-note{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:12px;text-align:right}
+
+/* pain */
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pain{background:var(--bg);padding:30px 28px;display:grid;gap:10px;align-content:start}
+.pain h3{font-family:var(--body);font-size:19px;font-weight:600;line-height:1.3}
+.pain p{color:var(--muted);font-size:15.5px}
+.pain .x{font-family:var(--mono);color:#FF7A59;font-size:13px}
+.verdict{margin-top:40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:30px 32px;border-radius:var(--r);background:var(--lime-dim);border:1px solid rgba(200,255,60,.28)}
+.verdict p{font-family:var(--display);font-size:clamp(19px,2.2vw,26px);font-weight:700;max-width:30ch;line-height:1.25}
+@media (max-width:860px){.pains{grid-template-columns:1fr}}
+
+/* cases */
+.template-note{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px dashed #4A5240;border-radius:10px;padding:10px 14px;display:inline-block}
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:grid;gap:22px;align-content:start;transition:border-color .25s}
+.case:hover{border-color:rgba(200,255,60,.45)}
+.case-tag{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.case-big{font-family:var(--display);font-weight:800;font-size:clamp(44px,5.4vw,68px);line-height:1;color:var(--lime);font-variant-numeric:tabular-nums}
+.case-big small{display:block;font-family:var(--body);font-weight:500;font-size:15px;color:var(--fg);margin-top:10px;line-height:1.4}
+.case-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.case-stats div{border-top:1px solid var(--line);padding-top:12px}
+.case-stats b{display:block;font-family:var(--display);font-size:20px;font-variant-numeric:tabular-nums}
+.case-stats span{font-size:13.5px;color:var(--muted)}
+.case p{color:#B9C1AF;font-size:15.5px}
+.case p strong{color:var(--fg);font-weight:600}
+@media (max-width:860px){.cases{grid-template-columns:1fr}}
+
+/* fit */
+.fit{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+.fit-col{border-radius:var(--r);padding:34px;display:grid;gap:18px;align-content:start}
+.fit-yes{background:var(--surface);border:1px solid rgba(200,255,60,.3)}
+.fit-no{border:1px solid var(--line)}
+.fit-col h3{font-family:var(--body);font-size:20px;font-weight:600}
+.fit-col ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.fit-col li{display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:16px}
+.fit-yes li::before{content:"→";color:var(--lime);font-weight:700}
+.fit-no li{color:var(--muted)}
+.fit-no li::before{content:"×";color:#FF7A59;font-weight:700}
+@media (max-width:860px){.fit{grid-template-columns:1fr}}
+
+/* value */
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.val{padding:28px 0 0;border-top:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.val h3{font-family:var(--body);font-weight:600;font-size:20px;line-height:1.3}
+.val p{color:var(--muted);font-size:15.5px}
+.val .benefit{font-family:var(--mono);font-size:12.5px;color:var(--lime)}
+@media (max-width:920px){.values{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.values{grid-template-columns:1fr}}
+
+/* compare */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r)}
+table{width:100%;border-collapse:collapse;min-width:760px;font-size:15.5px}
+th,td{padding:18px 22px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+thead th{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:400}
+thead th.us{color:var(--on-lime);background:var(--lime);font-weight:600}
+td:first-child{color:var(--muted);width:22%}
+td.us{background:var(--lime-dim);color:var(--fg);font-weight:500}
+td.weak{color:#9AA391}
+
+/* steps */
+.steps{display:grid;gap:0;counter-reset:s}
+.step{display:grid;grid-template-columns:120px 1fr 1fr;gap:28px;padding:30px 0;border-top:1px solid var(--line);align-items:start}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step-n{font-family:var(--display);font-size:44px;font-weight:800;color:transparent;-webkit-text-stroke:1.2px var(--lime);line-height:1}
+.step h3{font-family:var(--display);font-size:clamp(19px,2vw,24px);font-weight:700}
+.step .when{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:8px;display:block}
+.step p{color:#B9C1AF;font-size:16px}
+.step .out{margin-top:12px;font-size:14.5px;color:var(--fg)}
+.step .out b{color:var(--lime);font-weight:600}
+@media (max-width:860px){.step{grid-template-columns:1fr;gap:12px}.step-n{font-size:34px}}
+
+/* offer dept */
+.dept{background:radial-gradient(ellipse at 85% 0%,rgba(200,255,60,.14),transparent 55%),var(--surface);border:1px solid rgba(200,255,60,.3);border-radius:28px;padding:clamp(28px,5vw,64px);display:grid;gap:44px}
+.dept-top{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end}
+.dept h2{font-size:clamp(32px,5vw,64px);font-weight:800}
+.roles{display:flex;flex-wrap:wrap;gap:10px}
+.role{padding:11px 16px;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-size:15px}
+.role b{color:var(--lime);font-family:var(--mono);font-weight:400;font-size:12px;margin-right:6px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vs-card{border-radius:var(--r);padding:28px;display:grid;gap:14px;align-content:start}
+.vs-a{border:1px solid var(--line);background:var(--bg)}
+.vs-b{background:var(--lime);color:var(--on-lime)}
+.vs-card h3{font-family:var(--body);font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.08em}
+.vs-card ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:16px}
+.vs-a li{color:var(--muted)}
+.vs-a li::before{content:"— "}
+.vs-b li::before{content:"+ ";font-weight:700}
+.vs-b .sum{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.6vw,30px);line-height:1.15}
+.vs-a .sum{font-family:var(--display);font-weight:700;font-size:clamp(22px,2.6vw,30px);line-height:1.15;color:var(--fg)}
+@media (max-width:860px){.dept-top,.vs{grid-template-columns:1fr}}
+
+/* trust */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.tr{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:12px;align-content:start}
+.tr .ic{width:40px;height:40px;border-radius:12px;background:var(--lime-dim);display:grid;place-items:center;color:var(--lime);font-family:var(--mono);font-weight:600}
+.tr h3{font-family:var(--body);font-weight:600;font-size:18px;line-height:1.3}
+.tr p{color:var(--muted);font-size:15px}
+.numbers{display:grid;grid-template-columns:repeat(4,1fr);margin-top:18px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.num{padding:28px;border-right:1px solid var(--line)}
+.num:last-child{border-right:0}
+.num b{display:block;font-family:var(--display);font-size:clamp(30px,3.6vw,44px);font-weight:800;color:var(--lime);font-variant-numeric:tabular-nums;line-height:1}
+.num span{display:block;margin-top:10px;color:var(--muted);font-size:14.5px}
+@media (max-width:980px){.trust{grid-template-columns:repeat(2,1fr)}.numbers{grid-template-columns:repeat(2,1fr)}.num:nth-child(2){border-right:0}.num:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:560px){.trust{grid-template-columns:1fr}}
+
+/* audit */
+.audit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.audit-list{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0}
+.audit-list li{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.audit-list li:last-child{border-bottom:1px solid var(--line)}
+.audit-list .mono{color:var(--lime);font-size:13px;padding-top:3px}
+.audit-list b{display:block;font-weight:600}
+.audit-list span{color:var(--muted);font-size:15px}
+@media (max-width:900px){.audit{grid-template-columns:1fr}}
+
+/* forms */
+.form{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:clamp(24px,4vw,40px);display:grid;gap:16px}
+.form h3{font-family:var(--display);font-size:24px;font-weight:700}
+.form .sub{color:var(--muted);font-size:15px;margin-top:-6px}
+.field{display:grid;gap:7px}
+.field label{font-size:13.5px;color:var(--muted)}
+.field input,.field select{width:100%;font:inherit;font-size:16px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;transition:border-color .2s}
+.field input:focus,.field select:focus{border-color:var(--lime);outline:none}
+.field input::placeholder{color:#5D6555}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.row2{grid-template-columns:1fr}}
+.form .btn{width:100%;margin-top:4px}
+.form .fine{font-size:12.5px;color:var(--muted);text-align:center}
+.done{display:grid;gap:10px;text-align:center;padding:30px 0}
+.done b{font-family:var(--display);font-size:24px;color:var(--lime)}
+.done p{color:var(--muted)}
+.done small{font-family:var(--mono);font-size:11.5px;color:#5D6555}
+
+/* faq */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:start}
+.faq-list{border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:24px 44px 24px 0;font-size:18px;font-weight:600;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:18px;font-family:var(--display);font-size:26px;color:var(--lime);transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:#B9C1AF;padding:0 44px 26px 0;max-width:62ch}
+@media (max-width:900px){.faq{grid-template-columns:1fr}}
+
+/* final */
+.final{position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;left:50%;bottom:-420px;width:1000px;height:700px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(200,255,60,.18),transparent 62%);pointer-events:none}
+.final-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center;position:relative}
+.final h2{font-size:clamp(34px,5.4vw,72px);font-weight:800}
+.final ul{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px}
+.final li{display:grid;grid-template-columns:28px 1fr;font-size:17px}
+.final li::before{content:"✓";color:var(--lime);font-weight:700}
+@media (max-width:900px){.final-grid{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<!-- NAV -->
+<nav class="nav" aria-label="Главное меню">
+  <div class="wrap">
+    <a class="logo" href="#top"><i aria-hidden="true"></i>VEKTOR <small>growth partner</small></a>
+    <ul>
+      <li><a href="#results">Результаты</a></li>
+      <li><a href="#value">Что вы получите</a></li>
+      <li><a href="#process">Как работаем</a></li>
+      <li><a href="#dept">Отдел маркетинга</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-lime" href="#session">Стратсессия бесплатно</a>
+  </div>
+</nav>
+
+<!-- 1. HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Growth Partner для собственников бизнеса</span>
+      <h1>Строим маркетинг, который <em>растит выручку</em></h1>
+      <p class="lead">Берём бизнес на сопровождение и собираем систему роста под ключ: стратегия, оффер, воронка, контент, реклама, продажи, аналитика и AI. Одна команда, один план, ответственность за цифры в договоре.</p>
+      <div class="cta-row">
+        <a class="btn btn-lime" href="#session">Получить стратегическую сессию <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#audit">Бесплатный аудит бизнеса</a>
+      </div>
+      <div class="micro"><span>60 минут с growth-стратегом</span><span>Бесплатно</span><span>План остаётся у вас</span></div>
+      <div class="trust-strip">
+        <span class="chip">Договор и безнал</span>
+        <span class="chip">KPI в деньгах</span>
+        <span class="chip">Дашборд 24/7</span>
+        <span class="chip">Доступы остаются у вас</span>
+      </div>
+    </div>
+
+    <div class="dash" aria-label="Пример дашборда роста клиента">
+      <div class="dash-top"><span>Дашборд роста · месяц 6</span><span class="live">live</span></div>
+      <div class="kpis">
+        <div class="kpi"><span>Выручка из маркетинга</span><b>+64%</b><span class="up">▲ к старту</span></div>
+        <div class="kpi"><span>Квалифицированные заявки</span><b>412</b><span class="up">▲ ×2,9</span></div>
+        <div class="kpi"><span>Стоимость клиента</span><b>−37%</b><span class="down">▼ CAC</span></div>
+        <div class="kpi"><span>ROMI</span><b>340%</b><span class="up">▲ окупаемость</span></div>
+      </div>
+      <div class="chart">
+        <div class="chart-h"><span>Выручка по месяцам</span><span class="mono lime">прогноз → факт</span></div>
+        <svg viewBox="0 0 320 120" role="img" aria-label="Линия выручки растёт с первого по шестой месяц">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8FF3C" stop-opacity=".35"/><stop offset="1" stop-color="#C8FF3C" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="#262B20" stroke-width="1"><line x1="0" y1="30" x2="320" y2="30"/><line x1="0" y1="60" x2="320" y2="60"/><line x1="0" y1="90" x2="320" y2="90"/></g>
+          <path d="M0,98 L53,92 L106,84 L160,70 L213,52 L266,38 L320,16 L320,120 L0,120Z" fill="url(#g)"/>
+          <path d="M0,98 L53,96 L106,94 L160,92 L213,90 L266,88 L320,86" fill="none" stroke="#8E9784" stroke-width="1.5" stroke-dasharray="4 4"/>
+          <path class="growth-line" d="M0,98 L53,92 L106,84 L160,70 L213,52 L266,38 L320,16" fill="none" stroke="#C8FF3C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="320" cy="16" r="5" fill="#C8FF3C"/>
+        </svg>
+        <div class="chart-h mono" style="font-size:11px;margin-top:4px"><span>М1</span><span>М2</span><span>М3</span><span>М4</span><span>М5</span><span>М6</span></div>
+      </div>
+      <p class="dash-note">— — без системы &nbsp;·&nbsp; ━ с VEKTOR</p>
+    </div>
+  </div>
+</header>
+
+<!-- PAIN -->
+<section id="pain">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Узнаёте свой бизнес?</span>
+      <h2 class="h2">Деньги в маркетинг уходят. Рост не приходит.</h2>
+      <p class="lead">Почти каждый собственник, который приходит к нам, уже пробовал «запустить рекламу». Проблема почти никогда не в канале.</p>
+    </div>
+    <div class="pains">
+      <div class="pain"><span class="x">01 · хаос</span><h3>Маркетинг живёт отдельной жизнью</h3><p>Посты, реклама, акции, сайт. Всё делается, но никто не может сказать, как это связано с выручкой.</p></div>
+      <div class="pain"><span class="x">02 · подрядчики</span><h3>Подрядчики отвечают за клики, а не за деньги</h3><p>Отчёт красивый, охваты растут, а касса стоит. Спросить за результат не с кого.</p></div>
+      <div class="pain"><span class="x">03 · слепая зона</span><h3>Нет цифр, на которые можно опереться</h3><p>Неизвестно, сколько стоит клиент, какой канал окупается и куда добавить бюджет.</p></div>
+      <div class="pain"><span class="x">04 · качели</span><h3>Месяц густо, месяц пусто</h3><p>Поток клиентов зависит от сезона, удачи и настроения, а не от управляемой системы.</p></div>
+      <div class="pain"><span class="x">05 · потолок</span><h3>Бизнес упёрся в потолок</h3><p>Чтобы вырасти в новый город, продукт или рынок, нужна стратегия, а не ещё один подрядчик.</p></div>
+      <div class="pain"><span class="x">06 · всё на вас</span><h3>Маркетингом управляет собственник</h3><p>Вы ставите задачи пятерым исполнителям, проверяете и склеиваете результат. Это не ваша работа.</p></div>
+    </div>
+    <div class="verdict">
+      <p>Бизнесу не хватает не рекламы, а системы, которая превращает вложения в прибыль.</p>
+      <a class="btn btn-lime" href="#audit">Найти точки роста <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. RESULTS -->
+<section id="results">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Результаты наших клиентов</span>
+      <h2 class="h2">С нами бизнес растёт в доходе</h2>
+      <p class="lead">Мы считаем результат так же, как вы: в выручке, прибыли и стоимости клиента. Не в лайках и показах.</p>
+      <span class="template-note">Образец вёрстки: перед запуском замените ниши и цифры на реальные кейсы с разрешения клиентов</span>
+    </div>
+    <div class="cases">
+      <article class="case">
+        <span class="case-tag">Медицинский центр · 3 направления</span>
+        <div class="case-big">+62%<small>рост выручки за 6 месяцев</small></div>
+        <div class="case-stats">
+          <div><b>140 → 410</b><span>заявок в месяц</span></div>
+          <div><b>−38%</b><span>стоимость пациента</span></div>
+        </div>
+        <p><strong>Было:</strong> реклама у фрилансера, заявки терялись в мессенджерах, окупаемость никто не считал. <strong>Сделали:</strong> офферы под каждое направление, сквозную аналитику, CRM, скрипты для администраторов и AI-ассистента для записи.</p>
+      </article>
+      <article class="case">
+        <span class="case-tag">Производство · B2B</span>
+        <div class="case-big">×3,1<small>объём сделок в воронке продаж</small></div>
+        <div class="case-stats">
+          <div><b>+24%</b><span>средний чек</span></div>
+          <div><b>−21 день</b><span>цикл сделки</span></div>
+        </div>
+        <p><strong>Было:</strong> продажи только через знакомых и выставки. <strong>Сделали:</strong> позиционирование для дилеров, экспертный контент, лидогенерацию с квалификацией и автоматические цепочки догрева.</p>
+      </article>
+      <article class="case">
+        <span class="case-tag">Образование · онлайн и офлайн</span>
+        <div class="case-big">×2,4<small>выручка набора к прошлому сезону</small></div>
+        <div class="case-stats">
+          <div><b>410%</b><span>ROMI</span></div>
+          <div><b>31%</b><span>повторные продажи</span></div>
+        </div>
+        <p><strong>Было:</strong> набор держался на сарафане и скидках. <strong>Сделали:</strong> линейку продуктов, воронку через бесплатный урок, контент-систему и программу удержания.</p>
+      </article>
+      <article class="case">
+        <span class="case-tag">Премиум-товары для дома</span>
+        <div class="case-big">+78%<small>выручка сезона</small></div>
+        <div class="case-stats">
+          <div><b>12% → 27%</b><span>конверсия в замер</span></div>
+          <div><b>−44%</b><span>стоимость заявки</span></div>
+        </div>
+        <p><strong>Было:</strong> дорогие заявки и низкий процент выездов. <strong>Сделали:</strong> новый оффер с понятной ценой, видео-кейсы объектов, квиз-воронку и стандарт обработки заявки за 15 минут.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="fit">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Для кого мы</span>
+      <h2 class="h2">Для бизнеса, кому нужен Growth Partner, а не очередное агентство</h2>
+      <p class="lead">Мы берём в работу ограниченное число компаний, потому что за каждую отвечаем цифрами. Поэтому честно говорим, с кем нам по пути.</p>
+    </div>
+    <div class="fit">
+      <div class="fit-col fit-yes">
+        <h3>Нам по пути, если</h3>
+        <ul>
+          <li>У вас работающий бизнес и продукт, который уже покупают</li>
+          <li>Вы хотите расти системно: новые клиенты, новые продукты, новые рынки</li>
+          <li>Вы готовы открыть цифры продаж и принимать решения на их основе</li>
+          <li>Вы устали менять подрядчиков и сами склеивать маркетинг</li>
+          <li>Вам важно работать официально: договор, безнал, закрывающие документы</li>
+        </ul>
+      </div>
+      <div class="fit-col fit-no">
+        <h3>Не возьмёмся, если</h3>
+        <ul>
+          <li>Нужно «просто запустить рекламу» подешевле</li>
+          <li>Продукта ещё нет или спрос на него не проверен</li>
+          <li>Ждёте кратного роста за неделю без изменений внутри</li>
+          <li>Не готовы давать доступ к данным о продажах</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. VALUE -->
+<section id="value">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Что вы получите</span>
+      <h2 class="h2">Маркетинг, которым можно управлять как бизнесом</h2>
+      <p class="lead">Реклама, контент и AI здесь только инструменты. На выходе вы получаете механизм, который приносит прибыль и масштабируется.</p>
+    </div>
+    <div class="values">
+      <div class="val"><span class="benefit">→ прогнозируемость</span><h3>Стабильный поток клиентов</h3><p>Понятное число заявок и продаж каждый месяц. Вы планируете загрузку, закупки и найм заранее.</p></div>
+      <div class="val"><span class="benefit">→ контроль денег</span><h3>Прозрачная экономика</h3><p>Стоимость клиента, окупаемость каждого канала, ROMI. Вы точно знаете, куда добавить бюджет, а что отключить.</p></div>
+      <div class="val"><span class="benefit">→ решения по цифрам</span><h3>Дашборд вместо отчётов</h3><p>Выручка, заявки, конверсии и CAC в одном экране, 24/7. Без созвонов «как там дела».</p></div>
+      <div class="val"><span class="benefit">→ дорога к цели</span><h3>Стратегия роста на 12 месяцев</h3><p>Цели в деньгах, модель роста, приоритеты и детальный план на ближайшие 90 дней.</p></div>
+      <div class="val"><span class="benefit">→ выше чек и маржа</span><h3>Оффер, который продаёт</h3><p>Позиционирование, продуктовая линейка и аргументы, почему покупают у вас, даже если у конкурента дешевле.</p></div>
+      <div class="val"><span class="benefit">→ больше из тех же лидов</span><h3>Продажи без потерь</h3><p>CRM, скорость обработки, скрипты и контроль звонков. Заявки, за которые вы заплатили, доходят до оплаты.</p></div>
+      <div class="val"><span class="benefit">→ доверие до первого звонка</span><h3>Контент и креатив с задачей</h3><p>Каждый пост, видео и баннер работает на воронку: привлечь, убедить, довести до покупки.</p></div>
+      <div class="val"><span class="benefit">→ меньше рутины</span><h3>AI и автоматизация</h3><p>Ассистенты для ответов и записи, автоворонки, напоминания. Команда занята продажами, а не перепиской.</p></div>
+      <div class="val"><span class="benefit">→ свободное время собственника</span><h3>Один ответственный за результат</h3><p>Персональный growth-менеджер собирает всё в систему. Вы получаете решения, а не задачи.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. WHY US -->
+<section id="why">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Почему мы</span>
+      <h2 class="h2">Почему мы не фрилансеры и не посредники</h2>
+      <p class="lead">Фрилансер настраивает канал. Агентство выполняет ТЗ. Growth Partner отвечает за то, сколько бизнес зарабатывает.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Фрилансер</th><th>Обычное агентство</th><th class="us">VEKTOR · Growth Partner</th></tr></thead>
+        <tbody>
+          <tr><td>За что отвечает</td><td class="weak">Клики, охваты, «настроил»</td><td class="weak">Выполнение техзадания</td><td class="us">Выручка, прибыль, стоимость клиента</td></tr>
+          <tr><td>Как видит бизнес</td><td class="weak">Через один рекламный кабинет</td><td class="weak">В рамках своей услуги</td><td class="us">Целиком: продукт, оффер, воронка, продажи</td></tr>
+          <tr><td>Аналитика</td><td class="weak">Скриншоты из кабинета</td><td class="weak">PDF-отчёт раз в месяц</td><td class="us">Сквозной дашборд от рубля в рекламе до денег в кассе</td></tr>
+          <tr><td>Команда</td><td class="weak">Один человек на всё</td><td class="weak">Новый менеджер раз в полгода</td><td class="us">Стратег, маркетинг-менеджер, performance, креатив, аналитик, AI</td></tr>
+          <tr><td>Стратегия</td><td class="weak">Нет</td><td class="weak">Шаблонный медиаплан</td><td class="us">Модель роста с прогнозом в деньгах</td></tr>
+          <tr><td>Официальность</td><td class="weak">Чаще всего без договора</td><td class="weak">Договор на услуги</td><td class="us">Договор, безнал, NDA, KPI в приложении к договору</td></tr>
+          <tr><td>Если что-то пошло не так</td><td class="weak">Пропал, и всё встало</td><td class="weak">«Так сработал алгоритм»</td><td class="us">Разбор причин, план исправления, ответственность</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Как мы работаем</span>
+      <h2 class="h2">Пять шагов от хаоса к управляемому росту</h2>
+      <p class="lead">Каждый этап заканчивается результатом, который можно потрогать. Вы всегда знаете, что происходит и зачем.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="step-n">01</span><div><h3>Диагностика бизнеса</h3><span class="when">Неделя 1</span></div><div><p>Разбираем экономику, продукт, воронку, продажи, конкурентов и текущие цифры. Находим, где теряются деньги.</p><p class="out"><b>Результат:</b> карта точек роста с оценкой в деньгах.</p></div></div>
+      <div class="step"><span class="step-n">02</span><div><h3>Стратегия и модель роста</h3><span class="when">Неделя 2</span></div><div><p>Ставим цели в выручке, считаем юнит-экономику, выбираем каналы и бюджет, расписываем план на 90 дней.</p><p class="out"><b>Результат:</b> финмодель: сколько вложить и сколько получить.</p></div></div>
+      <div class="step"><span class="step-n">03</span><div><h3>Сборка системы</h3><span class="when">Недели 3–6</span></div><div><p>Оффер, посадочные страницы, контент, реклама, CRM, аналитика и AI-автоматизация запускаются как единый механизм.</p><p class="out"><b>Результат:</b> работающая воронка и первые продажи из системы.</p></div></div>
+      <div class="step"><span class="step-n">04</span><div><h3>Оптимизация</h3><span class="when">Каждую неделю</span></div><div><p>Тестируем гипотезы, усиливаем то, что окупается, и отключаем то, что нет. Каждую неделю вы видите цифры и решения.</p><p class="out"><b>Результат:</b> ниже стоимость клиента, выше конверсия и маржа.</p></div></div>
+      <div class="step"><span class="step-n">05</span><div><h3>Масштабирование</h3><span class="when">С 3-го месяца</span></div><div><p>Выходим в новые каналы, города, продукты и рынки. Помогаем выстроить отдел продаж под растущий поток.</p><p class="out"><b>Результат:</b> бизнес растёт без пропорционального роста хаоса.</p></div></div>
+    </div>
+    <div class="cta-row"><a class="btn btn-lime" href="#session">Начать с бесплатной стратсессии <span class="arrow">→</span></a></div>
+  </div>
+</section>
+
+<!-- 6. OFFER: DEPARTMENT -->
+<section id="dept">
+  <div class="wrap">
+    <div class="dept">
+      <div class="dept-top">
+        <div>
+          <span class="eyebrow">Главный оффер</span>
+          <h2 style="margin-top:20px">Отдел маркетинга по цене <span class="lime">1 сотрудника</span></h2>
+        </div>
+        <p class="lead">Вместо найма, обучения и управления целой командой вы подключаете готовый отдел маркетинга. Он начинает приносить результат через 2–3 недели, а не через полгода.</p>
+      </div>
+      <div class="roles" aria-label="Роли в команде">
+        <span class="role"><b>01</b>Growth-стратег</span>
+        <span class="role"><b>02</b>Маркетинг-менеджер</span>
+        <span class="role"><b>03</b>Performance-специалист</span>
+        <span class="role"><b>04</b>Контент-продюсер</span>
+        <span class="role"><b>05</b>Дизайнер и моушн</span>
+        <span class="role"><b>06</b>Аналитик</span>
+        <span class="role"><b>07</b>AI и автоматизация</span>
+      </div>
+      <div class="vs">
+        <div class="vs-card vs-a">
+          <h3>Собрать отдел в штат</h3>
+          <p class="sum">7 зарплат и 3–6 месяцев найма</p>
+          <ul>
+            <li>Налоги, рабочие места, софт, обучение</li>
+            <li>Поиск каждого специалиста с нуля</li>
+            <li>Вы управляете командой сами</li>
+            <li>Отпуска, больничные, текучка</li>
+            <li>Результат не раньше, чем через полгода</li>
+          </ul>
+        </div>
+        <div class="vs-card vs-b">
+          <h3>Подключить VEKTOR</h3>
+          <p class="sum">Фиксированная оплата на уровне зарплаты одного опытного маркетолога</p>
+          <ul>
+            <li>Готовая команда, старт за 14 дней</li>
+            <li>Один ответственный менеджер</li>
+            <li>KPI и стоимость зафиксированы в договоре</li>
+            <li>Масштабируем команду под задачи</li>
+            <li>Работаем по договору и безналу</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cta-row" style="margin-top:0">
+        <a class="btn btn-lime" href="#session">Рассчитать стоимость для моего бизнеса <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#faq">Что входит в оплату?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. TRUST -->
+<section id="trust">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Почему нам доверяют</span>
+      <h2 class="h2">Прозрачность вместо обещаний</h2>
+      <p class="lead">Вы не платите за «процесс». Вы видите каждую цифру, каждое решение и каждую потраченную единицу бюджета.</p>
+    </div>
+    <div class="trust">
+      <div class="tr"><span class="ic">§</span><h3>Официально и в белую</h3><p>Договор, безналичный расчёт, закрывающие документы и NDA. Как с любым серьёзным партнёром.</p></div>
+      <div class="tr"><span class="ic">KPI</span><h3>Цели в договоре</h3><p>До старта фиксируем, какие показатели считаем результатом и как их измеряем.</p></div>
+      <div class="tr"><span class="ic">24/7</span><h3>Дашборд в реальном времени</h3><p>Выручка, заявки, CAC и ROMI доступны вам в любой момент. Без ожидания отчёта.</p></div>
+      <div class="tr"><span class="ic">ключ</span><h3>Всё остаётся вашим</h3><p>Рекламные кабинеты, CRM, данные и контент оформлены на вашу компанию.</p></div>
+    </div>
+    <div class="numbers" aria-label="Ключевые цифры агентства">
+      <div class="num"><b>40+</b><span>бизнесов на сопровождении</span></div>
+      <div class="num"><b>×2,3</b><span>средний рост выручки за год</span></div>
+      <div class="num"><b>14 дней</b><span>от договора до запуска системы</span></div>
+      <div class="num"><b>87%</b><span>клиентов остаются дольше года</span></div>
+    </div>
+    <p style="margin-top:14px"><span class="template-note">Образец: подставьте реальные цифры агентства</span></p>
+  </div>
+</section>
+
+<!-- AUDIT OFFER -->
+<section id="audit">
+  <div class="wrap audit">
+    <div>
+      <span class="eyebrow">Бесплатно · ограниченное число мест в месяц</span>
+      <h2 class="h2" style="margin-top:20px">Получите бесплатный аудит и план масштабирования</h2>
+      <p class="lead" style="margin-top:20px">За 5 рабочих дней разберём ваш маркетинг и продажи и покажем, где бизнес теряет деньги и как вырасти в 2 раза.</p>
+      <ul class="audit-list">
+        <li><span class="mono">01</span><div><b>Аудит воронки и продаж</b><span>Где теряются заявки и сколько это стоит в месяц</span></div></li>
+        <li><span class="mono">02</span><div><b>Разбор рекламы и контента</b><span>Что окупается, что сжигает бюджет</span></div></li>
+        <li><span class="mono">03</span><div><b>Анализ конкурентов</b><span>Как продают они и где ваше преимущество</span></div></li>
+        <li><span class="mono">04</span><div><b>Экономика клиента</b><span>Стоимость привлечения, LTV, маржа на клиента</span></div></li>
+        <li><span class="mono">05</span><div><b>План масштабирования на 90 дней</b><span>Конкретные шаги и прогноз в деньгах</span></div></li>
+      </ul>
+    </div>
+    <form class="form" id="audit-form" data-form="audit" novalidate style="position:relative">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <h3>Заявка на аудит</h3>
+      <p class="sub">Ответим в течение 2 часов в рабочее время</p>
+      <div class="field"><label for="a-name">Имя</label><input id="a-name" name="name" required placeholder="Как к вам обращаться"></div>
+      <div class="field"><label for="a-phone">Телефон или Telegram</label><input id="a-phone" name="phone" required placeholder="+373 … или @username"></div>
+      <div class="field"><label for="a-site">Сайт или Instagram бизнеса</label><input id="a-site" name="site" placeholder="ссылка"></div>
+      <button class="btn btn-lime" type="submit">Получить аудит бесплатно <span class="arrow">→</span></button>
+      <p class="fine">Без спама и навязчивых продаж. Аудит ни к чему не обязывает.</p>
+    </form>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
+<section id="faq">
+  <div class="wrap faq">
+    <div class="head" style="margin:0">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h2">Ответы на вопросы, которые задают собственники</h2>
+      <p class="lead">Не нашли свой? Задайте его на стратегической сессии.</p>
+    </div>
+    <div class="faq-list">
+      <details open><summary>Чем вы отличаетесь от агентства, которое ведёт соцсети и рекламу?</summary><p>Они продают каналы, мы отвечаем за рост бизнеса. Мы начинаем с экономики и оффера, выстраиваем воронку и продажи, а рекламу и контент используем как части системы. Наша метрика это ваша выручка, а не охваты.</p></details>
+      <details><summary>Когда будет результат?</summary><p>Первые продажи из новой системы обычно появляются через 3–6 недель. Устойчивый рост выручки мы закладываем на 3–6 месяцев. Точный прогноз даём после аудита, на ваших цифрах.</p></details>
+      <details><summary>Сколько стоит работа?</summary><p>Фиксированная ежемесячная оплата на уровне зарплаты одного опытного маркетолога. За неё вы получаете целый отдел. Рекламный бюджет оплачивается отдельно и идёт напрямую в рекламные системы. Точную сумму называем после стратегической сессии.</p></details>
+      <details><summary>Вы гарантируете результат?</summary><p>Мы фиксируем KPI в договоре и отвечаем за то, что контролируем: систему, воронку, стоимость заявки, качество работы. Обещать «×10 за месяц» не будем. Это делают те, кто не собирается отвечать.</p></details>
+      <details><summary>Можно работать официально?</summary><p>Да. Договор, безналичный расчёт, закрывающие документы, NDA. Все доступы и аккаунты оформлены на вашу компанию.</p></details>
+      <details><summary>У нас уже есть маркетолог. Вы нам подходите?</summary><p>Да. Мы усиливаем вашего специалиста: даём стратегию, аналитику, креатив и производство. Он становится менеджером проекта внутри компании, а мы его командой.</p></details>
+      <details><summary>Сколько времени это займёт у меня?</summary><p>На старте 2–3 встречи по часу. Дальше около часа в неделю на разбор цифр и согласование решений. Всю операционную работу берём на себя.</p></details>
+      <details><summary>Что будет на бесплатной стратегической сессии?</summary><p>60 минут с growth-стратегом. Разберём бизнес, найдём 3 главные точки роста и оценим потенциал в деньгах. Даже если мы не начнём работать вместе, план останется у вас.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FINAL CTA -->
+<section class="final" id="session">
+  <div class="wrap final-grid">
+    <div>
+      <span class="eyebrow">Следующий шаг</span>
+      <h2 style="margin-top:20px">Получите бесплатную <span class="lime">стратегическую сессию</span></h2>
+      <p class="lead" style="margin-top:22px">60 минут, после которых вы будете знать, где ваш бизнес теряет деньги и какие три шага дадут рост уже в этом квартале.</p>
+      <ul>
+        <li>Разбор вашей воронки и экономики</li>
+        <li>3 главные точки роста с оценкой в деньгах</li>
+        <li>Понимание, нужен ли вам Growth Partner и какой формат подходит</li>
+      </ul>
+    </div>
+    <form class="form" id="session-form" data-form="session" novalidate style="position:relative">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <h3>Записаться на сессию</h3>
+      <p class="sub">Перезвоним и подберём удобное время</p>
+      <div class="row2">
+        <div class="field"><label for="s-name">Имя</label><input id="s-name" name="name" required placeholder="Ваше имя"></div>
+        <div class="field"><label for="s-phone">Телефон или Telegram</label><input id="s-phone" name="phone" required placeholder="+373 …"></div>
+      </div>
+      <div class="field"><label for="s-niche">Сфера бизнеса</label><input id="s-niche" name="niche" placeholder="Например, клиника, производство, образование"></div>
+      <div class="field"><label for="s-rev">Оборот в месяц</label>
+        <select id="s-rev" name="revenue">
+          <option>до 10 000 €</option>
+          <option selected>10 000 – 50 000 €</option>
+          <option>50 000 – 200 000 €</option>
+          <option>более 200 000 €</option>
+        </select>
+      </div>
+      <button class="btn btn-lime" type="submit">Забронировать сессию <span class="arrow">→</span></button>
+      <p class="fine">Бесплатно и без обязательств. Мест на сессии в месяц ограниченное количество.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><i aria-hidden="true"></i>VEKTOR</a>
+    <span>Growth Partner для бизнеса · Договор · Безнал · NDA</span>
+    <span>© 2026 VEKTOR</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var qs = new URLSearchParams(location.search), UTM = {};
+  ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function(k){
+    var v = qs.get(k);
+    try { if (v) sessionStorage.setItem(k, v); else v = sessionStorage.getItem(k); } catch(e){}
+    if (v) UTM[k] = v;
+  });
+  function handle(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var ok = true;
+      form.querySelectorAll('[required]').forEach(function(i){
+        var bad = !i.value.trim(); i.style.borderColor = bad ? '#FF7A59' : ''; if (bad) ok = false;
+      });
+      if (!ok) { form.querySelector('[required]').focus(); return; }
+      var data = Object.fromEntries(new FormData(form).entries());
+      data.form = form.dataset.form; data.page = location.href;
+      Object.assign(data, UTM);
+      var btn = form.querySelector('button[type=submit]'), label = btn.innerHTML;
+      btn.disabled = true; btn.innerHTML = 'Отправляем…';
+      var err = form.querySelector('.err'); if (err) err.remove();
+      fetch('/api/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)})
+        .then(function(r){ return r.json().then(function(j){ if(!r.ok || !j.ok) throw 0; }); })
+        .then(function(){
+          form.innerHTML = '<div class="done"><b>Заявка принята</b><p>Свяжемся с вами в течение 2 часов в рабочее время.</p></div>';
+        })
+        .catch(function(){
+          btn.disabled = false; btn.innerHTML = label;
+          var p = document.createElement('p'); p.className = 'fine err'; p.style.color = '#FF7A59';
+          p.textContent = 'Не удалось отправить. Проверьте соединение и попробуйте ещё раз.';
+          btn.after(p);
+        });
+    });
+  }
+  ['audit-form','session-form'].forEach(function(id){ var f=document.getElementById(id); if(f) handle(f); });
+})();
+</script>
+
+</body>
+</html>
